@@ -1,0 +1,371 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.App {
+  padding: 1em 2em;
+  background-color: #efefef;
+}
+
+.gradient-border-animation {
+  .card {
+    width: 250px;
+    height: 300px;
+    background-color: #07182e;
+    position: relative;
+    overflow: hidden;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 400px;
+      width: 200px;
+      // transform: translate(50%, 50%);
+
+      //   width: 50%;
+      //   height: 200%;
+      background-image: linear-gradient(
+        180deg,
+        rgb(0, 183, 255),
+        rgb(255, 48, 255)
+      );
+      animation: rotBGimg 3s linear infinite;
+      transition: all 0.2s linear;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      background: #07182e;
+      inset: 5px;
+    }
+
+    @keyframes rotBGimg {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
+.responsive-grid {
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+  .card {
+    height: 200px;
+    background-color: #7effb2;
+    flex: 1 0 200px;
+  }
+}
+
+.snap-carousel {
+  .container {
+    overflow: auto;
+    display: flex;
+    scroll-snap-type: x mandatory;
+    width: 200px;
+    height: 200px;
+    .item {
+      flex-shrink: 0;
+      scroll-snap-align: start;
+      width: 100%;
+    }
+  }
+}
+
+.hover-siblings {
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .item {
+      background-color: blue;
+      width: 100px;
+      height: 100px;
+      transition: 0.3s;
+    }
+  }
+
+  .container:hover > :not(:hover) {
+    opacity: 0.5;
+  }
+}
+
+.fluid-form {
+  form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+
+    .name {
+      flex: 1 0 130px;
+    }
+    .email {
+      flex: 1 0 130px;
+    }
+    button {
+      flex: 1 0 40px;
+    }
+  }
+}
+
+@mixin gradient-double($color-1, $color-2) {
+  background: $color-1;
+  background: -webkit-linear-gradient(to bottom, $color-1, $color-2);
+  background: linear-gradient(to bottom, $color-1, $color-2);
+}
+
+.gradients {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+
+    .card {
+      width: 300px;
+      height: 200px;
+      border-radius: 10px;
+    }
+
+    .gradient-fiery-blaze {
+      @include gradient-double(#ffa500, #ff0000);
+    }
+    .gradient-warm-sea {
+      @include gradient-double(#2afadf, #4c83ff);
+    }
+    .gradient-dandelion {
+      @include gradient-double(#ffd801, #ffa722);
+    }
+    .gradient-lavender {
+      @include gradient-double(#cd7ee7, #990fc7);
+    }
+    .gradient-seabird {
+      @include gradient-double(#00bfe0, #006d8f);
+    }
+    .gradient-peachy {
+      @include gradient-double(#ffb88c, #de6262);
+    }
+    .gradient-purple-flamingo {
+      @include gradient-double(#6f9ed8, #d261e4);
+    }
+    .gradient-golden-garden {
+      @include gradient-double(#daa520, #9acd32);
+    }
+  }
+}
+
+.analog-button {
+  button {
+    background-color: #1197cc;
+    color: #fff;
+    box-shadow: 4px 4px 0 #094c66;
+    border-radius: 8px;
+    transition: transform 200ms, box-shadow 200ms;
+    padding: 1em 2em;
+    border: none;
+
+    &:active {
+      transform: translateY(4px) translateX(4px);
+      box-shadow: 0 0 0 #094c66;
+    }
+  }
+}
+
+.card-grow-effect {
+  .container {
+    display: flex;
+    gap: 0.6em;
+    // width: 800px;
+    .card {
+      height: 200px;
+
+      flex: 1;
+      transition: 0.3s;
+
+      background: rgb(48, 207, 232);
+
+      &:hover {
+        flex: 3;
+        background: rgb(12, 171, 195);
+      }
+    }
+  }
+}
+
+.gradient-animation {
+  .background {
+    width: 600px;
+    height: 300px;
+    border-radius: 30px;
+    background: -webkit-linear-gradient(90deg, #2cd9ff, #7effb2);
+    background: linear-gradient(90deg, #2cd9ff, #7effb2);
+    background-size: 400% 400%;
+    animation: anim 2.5s infinite ease-in-out;
+  }
+
+  @keyframes anim {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+.slanted-shape {
+  .container {
+    background-color: rgb(177, 177, 177);
+    width: 600px;
+    height: 600px;
+    .shape {
+      height: 300px;
+      background-color: rgb(12, 12, 12);
+
+      padding-bottom: 1em;
+      clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - 3rem), 0% 100%);
+    }
+  }
+}
+
+.simple-overlay {
+  .container {
+    width: 600px;
+    height: 300px;
+    position: relative;
+    background: greenyellow;
+
+    &::before {
+      content: "Hello Sir";
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      width: 100%;
+      height: 100%;
+    }
+    &:hover::before {
+      opacity: 1;
+      transition: opacity 0.2s ease;
+    }
+  }
+}
+
+.conditional-display {
+  .search-container {
+    display: flex;
+    button {
+      display: none;
+    }
+    input:not(:placeholder-shown) + button {
+      display: block;
+    }
+  }
+}
+
+.button-shimmer {
+  .shimmer-btn {
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    border: none;
+    color: #fff;
+    background-color: hotpink;
+    background-image: linear-gradient(
+      -60deg,
+      transparent,
+      transparent 40%,
+      #ffffff44 40%,
+      #ffffff44 60%,
+      transparent 60%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    background-position-x: 150%;
+
+    &:hover {
+      background-position-x: -150%;
+      transition: background-position-x 600ms;
+    }
+  }
+}
+
+.card-interaction {
+  .card {
+    width: 500px;
+    height: 500px;
+
+    position: relative;
+    outline: 2px solid rgb(126 255 178/25%);
+    outline-offset: -10px;
+    overflow: hidden;
+    isolation: isolate;
+
+    &:hover img {
+      transform: scale(1.5);
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      object-fit: cover;
+      transition: transform 0.25s;
+      z-index: -1;
+    }
+  }
+}
+
+
+
+.underline-hover-effect {
+  ul {
+  display: flex;
+  font-size: 2rem;
+  gap: 1em;
+
+  li {
+    display: block;
+    position: relative;
+    padding: 0.1em 0;
+
+    .active {
+      color: blue;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: blue;
+      transition: opacity 100ms, transform 100ms;
+      opacity: 1;
+      transform: scale(0);
+      transform-origin: center;
+    }
+
+    &:hover::after,
+    &:focus::after {
+      transform: scale(1);
+    }
+  }
+}
+}
+
