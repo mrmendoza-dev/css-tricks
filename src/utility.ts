@@ -31,9 +31,9 @@ window.navigator.vibrate([200, 50, 200]);
 
 
 const keyframes = [
-    {color: "#000000"}. {color: "#ffffff"}
+    {color: "#000000"}, {color: "#ffffff"}
 ];
-const options = {
+const options: any = {
     duration: 1000,
     iterations: Infinity,
     direction: "alternate",
@@ -41,3 +41,11 @@ const options = {
 };
 document.getElementById("item")?.animate(keyframes, options);
 
+
+
+function utility() {
+  console.log("utility");
+}
+
+
+export default utility();
