@@ -8,6 +8,11 @@ function App() {
       <h1>CSS Tricks</h1>
 
       <div className="modules">
+        <div className="next-js-border-animation">
+          <h2 className="subtitle">Next JS Border Animation</h2>
+          <div className="thirteen"></div>
+        </div>
+
         <div className="gradient-border-animation">
           <h2 className="subtitle">Gradient Border Animation</h2>
 
@@ -151,7 +156,6 @@ function App() {
           </div>
         </div>
 
-
         {/* <div className="spline-3d">
           <canvas id="canvas3d" className="container">
             <Spline3D />
@@ -159,6 +163,13 @@ function App() {
         </div> */}
 
 
+
+        <div className="invalid-input">
+          <h2 className="subtitle">Invalid Input</h2>
+          <div className="container">
+            <input type="text" placeholder="Name" pattern="[a-z]*"/>
+            </div>
+        </div>
       </div>
     </div>
   );
